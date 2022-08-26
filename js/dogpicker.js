@@ -24,7 +24,7 @@ const languages = {
     getPhotos_btn: {
         eng: 'Show',
         hun: 'Mutasd',
-        pol: 'Pokaż zdjęcia'
+        pol: 'Pokaż zdjęcia',
     },
     h2: {
         eng: 'Photos will appear in this box:',
@@ -47,9 +47,9 @@ const languages = {
         pol: `Ta strona jest prowadzona przez <span id="myName"></span>`,
     },
     if_less: {
-        eng: `<span>(only <span id="found_only"></span> photos were found)</span>`,
-        hun: `<span>(csak <span id="found_only"></span> fotó található)</span>`,
-        pol: `<span>(znaleziono tylko <span id="found_only"></span> zdjęć)</span>`,
+        eng: `<span>Only <span id="found_only"></span> photos were found!</span>`,
+        hun: `<span>Csak <span id="found_only"></span> fotó található!</span>`,
+        pol: `<span>Znaleziono tylko <span id="found_only"></span> zdjęć!</span>`,
     },
     if_zero: {
         eng: `No photos found!`,
@@ -58,7 +58,9 @@ const languages = {
     },
 }
 
-
+let flags = [...document.querySelectorAll('.flag')];
+let arrow = document.querySelector('#arrow');
+let numberSelector = document.querySelector('#numbers select');
 
 let logo = document.querySelector('#logo');
 let h1 = document.querySelector('h1');
@@ -66,9 +68,8 @@ let choose = document.querySelector('#breeds span');
 let nums = document.querySelector('#numbers span');
 let btn = document.querySelector('#getPhotos-btn');
 let h2 = document.querySelector('#container-title');
+let warning = document.querySelector('#warning');
 let link = document.querySelector('footer a');
-let flags = [...document.querySelectorAll('.flag')];
-let arrow = document.querySelector('#arrow');
 
 const setLanguage = (lang) => {
     h1.innerHTML = languages.h1[lang];
@@ -84,8 +85,19 @@ const setLanguage = (lang) => {
 }
 
 let currentLanguage = 'eng';
+let currentNumOfPhotos;
 
 setLanguage(currentLanguage);
+
+const setWarning = (length, number) => {
+    warning.innerHTML = '';
+    if (length === 0) {
+        warning.innerHTML = languages.if_zero[`${currentLanguage}`];
+    } else if (length < number) {
+        warning.innerHTML = languages.if_less[`${currentLanguage}`];
+        document.querySelector('#found_only').innerHTML = length;
+    }
+}
 
 flags.forEach(flag => {
     flag.addEventListener('click', () => {
@@ -101,6 +113,10 @@ flags.forEach(flag => {
         arrow.style.marginLeft = languages.arrowIntendation[`${selector}`];
 
         currentLanguage = flag.getAttribute('language');
+
+        console.log(numberSelector.value);
+
+        setWarning(currentNumOfPhotos, numberSelector.value);
     })
 })
 
@@ -181,9 +197,13 @@ btn.addEventListener("click", () => {
                 chosenBreed = chosenBreed.join(' ');
             }
 
+            setWarning(data.message.length, chosenNum);
+
             let firstLetter = chosenBreed[0].toUpperCase();
             let tail = chosenBreed.slice(1, chosenBreed.length);
             document.querySelector("#container-title").innerHTML = `<span>${firstLetter}${tail}</span>`;
+
+            currentNumOfPhotos = data.message.length
         });
 });
 
