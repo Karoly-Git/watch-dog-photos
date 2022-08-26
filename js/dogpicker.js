@@ -142,7 +142,7 @@ btn.addEventListener("click", () => {
         chosenBreed = chosenBreed.join('/');
     }
 
-    const chosenNum = document.querySelector('#numbers input').value;
+    const chosenNum = document.querySelector('#numbers select').value;
 
     fetch(`https://dog.ceo/api/breed/${chosenBreed}/images/random/${chosenNum}`)
         .then(response => response.json())
