@@ -45,8 +45,20 @@ const languages = {
         eng: `This site is maintained by <span id="myName"></span>`,
         hun: `Ezt az oldalt <span id="myName"></span> fejleszti`,
         pol: `Ta strona jest prowadzona przez <span id="myName"></span>`,
-    }
+    },
+    if_less: {
+        eng: `<span>(only <span id="found_only"></span> photos were found)</span>`,
+        hun: `<span>(csak <span id="found_only"></span> fotó található)</span>`,
+        pol: `<span>(znaleziono tylko <span id="found_only"></span> zdjęć)</span>`,
+    },
+    if_zero: {
+        eng: `No photos found!`,
+        hun: `Fénykép nem található!`,
+        pol: `Nie znaleziono zdjęć!`,
+    },
 }
+
+
 
 let logo = document.querySelector('#logo');
 let h1 = document.querySelector('h1');
@@ -71,7 +83,9 @@ const setLanguage = (lang) => {
     myName.innerHTML = languages.myName;
 }
 
-setLanguage(defaultLanguage = 'eng');
+let currentLanguage = 'eng';
+
+setLanguage(currentLanguage);
 
 flags.forEach(flag => {
     flag.addEventListener('click', () => {
@@ -83,7 +97,10 @@ flags.forEach(flag => {
         if (h2InnerText.split(' ').length <= 3) {
             h2.innerHTML = h2InnerText;
         }
+
         arrow.style.marginLeft = languages.arrowIntendation[`${selector}`];
+
+        currentLanguage = flag.getAttribute('language');
     })
 })
 
@@ -135,7 +152,9 @@ let pictureContainer = document.getElementById('picture-container');
 
 btn.addEventListener("click", () => {
     pictureContainer.innerHTML = ``;
+
     let chosenBreed = document.querySelector('#breeds select').value;
+
     if (chosenBreed.split(' ').length > 1) {
         chosenBreed = chosenBreed.split(' ');
         [chosenBreed[0], chosenBreed[1]] = [chosenBreed[1], chosenBreed[0]];
@@ -149,22 +168,23 @@ btn.addEventListener("click", () => {
         .then(data => {
             const randomPhotoList = data.message;
             const photos = Object.values(randomPhotoList);
+
             photos.map(src => document.getElementById('picture-container').innerHTML += `
-            <div class="picture-box">
-                <img src="${src}" alt="${chosenBreed}"></img>
-            </div>
-            `);
+                <div class="picture-box">
+                    <img src="${src}" alt="${chosenBreed}"></img>
+                </div>
+                `);
+
+            if (chosenBreed.split('/').length > 1) {
+                chosenBreed = chosenBreed.split('/');
+                [chosenBreed[0], chosenBreed[1]] = [chosenBreed[1], chosenBreed[0]];
+                chosenBreed = chosenBreed.join(' ');
+            }
+
+            let firstLetter = chosenBreed[0].toUpperCase();
+            let tail = chosenBreed.slice(1, chosenBreed.length);
+            document.querySelector("#container-title").innerHTML = `<span>${firstLetter}${tail}</span>`;
         });
-
-    if (chosenBreed.split('/').length > 1) {
-        chosenBreed = chosenBreed.split('/');
-        [chosenBreed[0], chosenBreed[1]] = [chosenBreed[1], chosenBreed[0]];
-        chosenBreed = chosenBreed.join(' ');
-    }
-
-    let firstLetter = chosenBreed[0].toUpperCase();
-    let tail = chosenBreed.slice(1, chosenBreed.length);
-    document.querySelector("#container-title").innerHTML = `<span>${firstLetter}${tail}</span>`;
 });
 
 
