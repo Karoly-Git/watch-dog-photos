@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    min-width: 350px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    min-height: 100vh;
+    padding-top: 1rem;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+#flag-container {
+    display: flex;
+}
+
+.flag {
+    height: 1.25rem;
+    margin-right: 0.5rem;
+    box-shadow: 1px 1px 2px black;
+}
+
+.flag:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 2px black;
+}
+
+#arrow {
+    margin-left: 0.85rem;
+}
+
+#top-container {
+    display: flex;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#logo {
+    width: 10rem;
+    cursor: pointer;
+    margin-right: 3rem;
+}
+
+#name {
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+#form>div {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+}
+
+#breeds,
+#numbers {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25rem;
+}
+
+#breeds span,
+#numbers span {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+
+#breeds {
+    margin-right: 1rem;
+}
+
+#breeds select {
+    text-transform: capitalize;
+    width: 13rem;
+    height: 2rem;
+    color: royalblue;
+    border: 1px solid royalblue;
+    font-weight: 700;
+    padding-left: 0.25rem;
+}
+
+#numbers input {
+    padding-left: 0.25rem;
+    width: 4rem;
+    height: 2rem;
+    border: 1px solid royalblue;
+}
+
+#getPhotos-btn {
+    width: 13rem;
+    font-size: 1.5rem;
+    color: white;
+    padding: 0.5rem 0;
+    border: none;
+    background-color: DodgerBlue;
+    cursor: pointer;
+}
+
+#getPhotos-btn:hover {
+    background-color: RoyalBlue;
+}
+
+#container-title {
+    margin-bottom: 1rem;
+}
+
+#frame-box {
+    padding: 1rem;
+    border: 3px solid gray;
+}
+
+#picture-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    white-space: nowrap;
+    min-height: 16rem;
+    justify-content: flex-start;
+    width: 100%;
+    height: 15rem;
+}
+
+.picture-box {
+    margin-right: 1rem;
+    height: 95%;
+}
+
+.picture-box:last-child {
+    margin-right: 0;
+}
+
+.picture-box img {
+    height: 100%;
+}
+
+/*
+.opt-level-A {
+    color: blue;
+    font-weight: 600;
+}
+
+.opt-level-B {
+    color: blue;
+    font-weight: 600;
+}
+*/
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: RoyalBlue;
+    margin: auto 0 0 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+footer a:hover {
+    color: black;
+}
+
+#myName {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+@media screen and (max-width: 650px) {
+    #picture-container {
+        flex-direction: column;
+        overflow: auto;
+        height: unset;
+    }
+
+    .picture-box {
+        margin-right: unset;
+        margin-bottom: 1rem;
+    }
+
+    .picture-box:last-child {
+        margin-bottom: 0;
+    }
+
+    .picture-box img {
+        width: 100%;
+    }
+
+    footer {
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #logo {
+        margin-right: unset;
+        margin-bottom: 1rem;
+    }
+
+    #top-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    #form {
+        margin-top: unset;
+    }
+}

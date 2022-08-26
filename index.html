@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random dog photos</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+    <script defer src="https://kit.fontawesome.com/2a269bc26f.js" crossorigin="anonymous"></script>
+    <script defer src="./js/dogpicker.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div id="flag-container">
+                    <img class="flag" src="./img/flag_gb.jpg" language="eng" alt="British flag">
+                    <img class="flag" src="./img/flag_hun.png" language="hun" alt="Hungaryan flag">
+                    <img class="flag" src="./img/flag_pl.jpg" language="pol" alt="Polish flag">
+                </div>
+                <i id="arrow" class=" fa-solid fa-angle-up"></i>
+            </nav>
+        </header>
+
+        <main>
+            <div id="top-container">
+                <img id="logo" src="./img/dog_left.png" title="Click on me!" alt="puppy with smiley face">
+                <div>
+                    <h1 id="name"></h1>
+                    <div id="form">
+                        <div>
+                            <label id="breeds">
+                                <span></span>
+                                <select></select>
+                            </label>
+                            <label id="numbers">
+                                <span></span>
+                                <input placeholder="1-10" min="1" max="10" type="number" value="1">
+                            </label>
+                        </div>
+                        <button id="getPhotos-btn"></button>
+                    </div>
+                </div>
+            </div>
+            <h2 id="container-title"></h2>
+            <div id="frame-box">
+                <div id="picture-container"></div>
+            </div>
+        </main>
+
+        <footer>
+            <a href="https://karoly-portfolio.herokuapp.com/" target="_blank"></a>
+        </footer>
+    </div>
+</body>
+
+</html>
