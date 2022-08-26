@@ -17,9 +17,9 @@ const languages = {
         pol: 'Wybierz rasę psa:'
     },
     lb2: {
-        eng: 'Number of photos (1...10):',
-        hun: 'Fotók száma (1...10):',
-        pol: 'Liczba zdjęć (1...10):'
+        eng: 'Number of photos:',
+        hun: 'Fotók száma:',
+        pol: 'Liczba zdjęć:'
     },
     getPhotos_btn: {
         eng: 'Show',
