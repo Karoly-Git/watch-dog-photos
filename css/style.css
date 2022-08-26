@@ -44,6 +44,7 @@ header {
 
 #arrow {
     margin-left: 0.85rem;
+    color: royalblue;
 }
 
 #top-container {
@@ -53,10 +54,23 @@ header {
     padding-bottom: 2rem;
 }
 
+#top-container>div {
+    border-left: 0.5rem solid royalblue;
+    padding-left: 1rem;
+}
+
+h1,
+h2,
+#breeds,
+#numbers {
+    color: rgb(218, 165, 32);
+    color: rgba(0, 0, 0, 0.8);
+}
+
 #logo {
     width: 10rem;
     cursor: pointer;
-    margin-right: 3rem;
+    margin-right: 1rem;
 }
 
 #name {
@@ -97,6 +111,15 @@ header {
 #breeds select {
     text-transform: capitalize;
     width: 13rem;
+    height: 2rem;
+    color: royalblue;
+    border: 1px solid royalblue;
+    font-weight: 700;
+    padding-left: 0.25rem;
+}
+
+#numbers select {
+    width: 5rem;
     height: 2rem;
     color: royalblue;
     border: 1px solid royalblue;
