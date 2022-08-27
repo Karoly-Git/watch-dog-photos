@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    *transition: all 200ms ease-in-out;
 }
 
 html {
@@ -10,6 +11,7 @@ html {
 }
 
 body {
+    transition: all 200ms ease-in-out;
     min-width: 350px;
 }
 
@@ -29,6 +31,14 @@ header {
 
 #flag-container {
     display: flex;
+    align-items: center;
+}
+
+#darkBrightSwitch {
+    font-size: 1.5rem;
+    margin-left: auto;
+    margin-right: 0;
+    cursor: pointer;
 }
 
 .flag {
@@ -45,6 +55,22 @@ header {
 #arrow {
     margin-left: 0.85rem;
     color: royalblue;
+}
+
+#scroll {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    width: 2.5rem;
+    height: 3rem;
+    color: white;
+    font-size: 2rem;
+    position: fixed;
+    bottom: 2rem;
+    right: 5vw;
+    border-radius: 1rem 0 0 1rem;
+    cursor: pointer;
 }
 
 #top-container {
@@ -149,7 +175,7 @@ h2,
 }
 
 #warning {
-    color: darkred;
+    color: red;
 }
 
 #container-title {

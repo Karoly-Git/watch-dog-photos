@@ -51,6 +51,11 @@ const languages = {
         hun: `<span>Csak <span id="found_only"></span> fotó található!</span>`,
         pol: `<span>Znaleziono tylko <span id="found_only"></span> zdjęć!</span>`,
     },
+    if_one: {
+        eng: `<span>Only 1 photo was found!</span>`,
+        hun: `<span>Csak 1 fotó található!</span>`,
+        pol: `<span>Znaleziono tylko 1 zdjęcie!</span>`,
+    },
     if_zero: {
         eng: `No photos found!`,
         hun: `Fénykép nem található!`,
@@ -93,6 +98,8 @@ const setWarning = (length, number) => {
     warning.innerHTML = '';
     if (length === 0) {
         warning.innerHTML = languages.if_zero[`${currentLanguage}`];
+    } else if (length === 1 && number > 1) {
+        warning.innerHTML = languages.if_one[`${currentLanguage}`];
     } else if (length < number) {
         warning.innerHTML = languages.if_less[`${currentLanguage}`];
         document.querySelector('#found_only').innerHTML = length;
@@ -113,8 +120,6 @@ flags.forEach(flag => {
         arrow.style.marginLeft = languages.arrowIntendation[`${selector}`];
 
         currentLanguage = flag.getAttribute('language');
-
-        console.log(numberSelector.value);
 
         setWarning(currentNumOfPhotos, numberSelector.value);
     })
@@ -207,8 +212,56 @@ btn.addEventListener("click", () => {
         });
 });
 
+const scrollUpBtn = document.querySelector('#scroll');
 
 
+/*
+const scrollToTop = () => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    if (c > 0) {
+        window.requestAnimationFrame(scrollToTop);
+        window.scrollTo(0, c - c / 10);
+    }
+};
+scrollToTop();
+scrollUpBtn.addEventListener('click', scrollToTop);
+*/
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        scrollUpBtn.style.display = "flex";
+    } else {
+        scrollUpBtn.style.display = "none";
+    }
+}
+
+
+
+scrollUpBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+})
+
+
+let isBright = true;
+
+const darkBrightSwitch = () => {
+    if (isBright) {
+        isBright = false;
+        let darkChild = document.createElement('link');
+        darkChild.setAttribute('rel', "stylesheet");
+        darkChild.setAttribute('href', "./css/dark_style.css");
+        document.querySelector('head').appendChild(darkChild);
+    } else {
+        isBright = true;
+        let toBeDeleted = document.querySelector('head link:last-child');
+        toBeDeleted.remove();
+    }
+}
+
+document.querySelector('#darkBrightSwitch').addEventListener('click', darkBrightSwitch);
 
 
 

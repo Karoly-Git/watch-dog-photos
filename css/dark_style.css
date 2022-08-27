@@ -1,0 +1,74 @@
+body {
+    background-color: black;
+}
+
+.flag,
+.flag:hover {
+    box-shadow: unset;
+}
+
+#arrow {
+    color: white;
+}
+
+#darkBrightSwitch {
+    filter: invert();
+}
+
+#scroll {
+    background-color: gray;
+    color: black;
+}
+
+#top-container>div {
+    border-color: gray;
+    padding-left: 1rem;
+}
+
+h1,
+h2,
+#breeds,
+#numbers {
+    color: white;
+}
+
+#logo {
+    filter: invert();
+}
+
+#breeds select,
+#numbers select {
+    color: white;
+    background-color: grey;
+    border-color: grey;
+}
+
+#numbers input {
+    border-color: grey;
+}
+
+#getPhotos-btn {
+    color: white;
+    background-color: grey;
+}
+
+#getPhotos-btn:hover {
+    background-color: darkgrey;
+}
+
+#warning {
+    color: white;
+}
+
+
+footer {
+    background-color: grey;
+}
+
+footer a {
+    color: black;
+}
+
+footer a:hover {
+    color: white;
+}
