@@ -108,7 +108,7 @@ const setWarning = (length, number) => {
 
 flags.forEach(flag => {
     flag.addEventListener('click', () => {
-        let selector = flag.getAttribute('language');
+        let selector = flag.getAttribute('id');
         let h2InnerText = h2.innerText;
 
         setLanguage(selector);
